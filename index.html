@@ -403,6 +403,27 @@ function render() {
 }
 
 render();
+
+// Stale year check
+const scheduleYear = 2026;
+const currentYear = new Date().getFullYear();
+if (currentYear > scheduleYear) {
+    const stale = document.createElement('div');
+    stale.style.cssText = `
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background: #333;
+        color: #f0a060;
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        text-align: center;
+        padding: 10px;
+        letter-spacing: 1px;
+        z-index: 999;
+    `;
+    stale.textContent = 'Schedule is stale. Consider updating — year has changed.';
+    document.body.prepend(stale);
+}
 </script>
 </body>
 </html>
